@@ -7,7 +7,7 @@ class Cat
   }
   public function read($param)
   {
-    $stmt = $this->db->prepare("select * from cat");
+    $stmt = $this->db->prepare("select * from tag");
     $r = $stmt->execute();
     $data = $stmt->fetchAll(2);
     // dd($data);
