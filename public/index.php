@@ -8,8 +8,8 @@ switch ($uri) {
   case '/':
     tpl('home');
     break;
-  case '/public':
-    tpl('home');
+  case '/admin':
+    tpl('login');
     break;
   default:
     http_response_code(404);
