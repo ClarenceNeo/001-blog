@@ -27,3 +27,22 @@
   font-size: 1.5em;
   margin: 0.83em 0;
 }
+
+.post_footer {
+  padding: 20px 0;
+  color: #bbbbbb;
+}
+
+.tags {
+  margin-left: 5px;
+}
+
+.tags a {
+  color: #bbbbbb;
+  margin-left: 5px;
+  transition: all 0.15s linear;
+}
+
+.tags a:hover {
+  color: #4e4d4d;
+}
