@@ -1,8 +1,13 @@
 <?php
 require_once('../util/helper.php');
-// require_once('../api/gateway.php');
+require_once('../api/gateway.php');
 
 $uri = $_SERVER['REQUEST_URI'];
+
+if (strpos($uri, '/a/') !== false) {
+  echo parse_param($uri);
+  return;
+}
 
 switch ($uri) {
   case '/':
