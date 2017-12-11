@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once(dirname(__FILE__) . '/../util/helper.php');
-// require_once(dirname(__FILE__) . '/./article.php');
+require_once(dirname(__FILE__) . '/./article.php');
 
 function parse_param($uri){
   $uri = explode('?', $uri)[0];
@@ -15,9 +15,9 @@ function parse_param($uri){
 
   $db = new_db();
 
-  // $model = new $klass($db);
+  $model = new $klass($db);
 
-  // $res = $model->method($param);
+  $res = $model->$method($param);
 
-  // echo json($res);
+  echo json($res);
 }
