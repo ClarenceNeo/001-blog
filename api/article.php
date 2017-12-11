@@ -7,7 +7,13 @@ class Article
   }
   public function read($param)
   {
-    return $param;
+    $stmt = $this->db->prepare("select * from post");
+    $r = $stmt->execute();
+    $data = $stmt->fetchAll(2);
+    // dd($data);
+    return $r ?
+      ['success' => true, 'data' => $data] :
+      ['success' => false, 'msg' => 'db_internal_error'];
   }
 
   public function add($param)
