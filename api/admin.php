@@ -13,7 +13,7 @@ class Admin
     $password = $this->hash_password($password);
 
     if ($username === $valid_username && $password === $valid_password) {
-      $_SESSION['user'] = 'admin';
+      $_SESSION['user'] = 'author';
       return s();
     }
   }

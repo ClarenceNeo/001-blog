@@ -11,7 +11,7 @@ if (strpos($uri, '/a/') !== false) {
 
 switch ($uri) {
   case '/':
-    var_dump($_SESSION['user']);
+    // var_dump($_SESSION['user']);
     tpl('home');
     break;
   case '/admin':
