@@ -20,6 +20,7 @@ class Admin
 
   public function logout(){
     unset($_SESSION['user']);
+    return ['success' => true, 'msg' => 'logout'];
   }
 
   public function hash_password($password){
