@@ -11,6 +11,12 @@ switch ($uri) {
   case '/admin':
     tpl('login');
     break;
+  case '/post':
+    tpl('admin/post');
+    break;
+  case '/cat':
+    tpl('admin/cat');
+    break;
   default:
     http_response_code(404);
     die('404 找不到');
