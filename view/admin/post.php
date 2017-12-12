@@ -10,6 +10,9 @@
 </head>
 <body>
   <div class="container">
+    <button id="logout">退出登录</button>
+  </div>
+  <div class="container">
     <h2>添加文章</h2>
     <form id="post-form">
       <input type="hidden" name="id">

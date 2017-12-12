@@ -2,9 +2,23 @@
   'use strict';
   var el_cat_list = document.querySelector('#cat-list');
   var el_form = document.querySelector('#post-form');
+  var logout = document.querySelector('#logout');
   function init() {
     render_cat();
     bind_submit();
+    bind_logout();
+  }
+
+  function bind_logout() {
+    logout.addEventListener('click', function (e) {
+      e.preventDefault();
+      $.get("/a/admin/logout")
+        .then(function (res) {
+          if (res.success) {
+            window.location.href = 'http://localhost:1234/';
+          }
+        })
+    })
   }
 
   function bind_submit() {

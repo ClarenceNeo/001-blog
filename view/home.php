@@ -16,16 +16,12 @@
         <h1>BLOG</h1>
       </div>
       <div class="content">
-        <h2><a class="title" href="#">标题标题标题</a></h2>
-        <p>Article contentArticle contentArticle contentArticle contentArticle contentArticle contentArticle contentArticle contentArticle contentArticle contentArticle content</p>
-        <div class="post_footer">
-          <span>2017.12.11</span>
-          <span class="tags"><i class="fa fa-tags"></i><a href="#">tag1</a> <a href="#">tag2</a></span>
-        </div>
       </div>
     </div>
   </div>
   <div class="container">
   </div>
+  <?php tpl('component/js') ?>
+  <script src="js/home.js"></script>
 </body>
 </html>

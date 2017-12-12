@@ -21,5 +21,7 @@
       <button type="submit" class="btn btn-default">登录</button>
     </form>
   </div>
+  <?php tpl('component/js') ?>
+  <script src="js/login.js"></script>
 </body>
 </html>

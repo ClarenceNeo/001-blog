@@ -18,9 +18,17 @@ switch ($uri) {
     tpl('login');
     break;
   case '/post':
+    if(!@$_SESSION['user']){
+      echo '无权限';
+      die();
+    }
     tpl('admin/post');
     break;
   case '/cat':
+    if(!@$_SESSION['user']){
+      echo '无权限';
+      die();
+    }
     tpl('admin/cat');
     break;
   default:
