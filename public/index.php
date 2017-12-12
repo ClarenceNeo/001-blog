@@ -14,7 +14,7 @@ switch ($uri) {
     // var_dump($_SESSION['user']);
     tpl('home');
     break;
-  case '/admin':
+  case '/login':
     tpl('login');
     break;
   case '/post':
