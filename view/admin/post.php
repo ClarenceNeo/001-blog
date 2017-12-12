@@ -5,28 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <?php tpl('component/css') ?>
+  <link rel="stylesheet" href="css/post.css">
   <title>Document</title>
 </head>
 <body>
   <div class="container">
     <h2>添加文章</h2>
-    <form id="product-form">
+    <form id="post-form">
       <input type="hidden" name="id">
       <label>
         标题：
-        <input class="form-control" type="text" name="title">
+        <input type="text" name="title">
       </label>
       <label>
         正文：
-        <input class="form-control" type="text" name="content">
+        <textarea name="content" rows="10" cols="50"></textarea>
       </label>
       <label>
         Tag：
-        <select class="form-control" name="cat_id" id="cat-selector">
-        </select>
+        <div id="cat-list">
+        </div>
       </label>
       <button class="btn btn-primary" type="submit">提交</button>
     </form>
   </div>
+  <?php tpl('component/js') ?>
+  <script src="js/post.js"></script>
 </body>
 </html>

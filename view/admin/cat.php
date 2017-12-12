@@ -11,7 +11,7 @@
 <body>
   <div class="container">
     <h2>Tag</h2>
-    <form id="product-form">
+    <form id="cat-form">
       <input type="hidden" name="id">
       <label>
         标题：
@@ -19,10 +19,10 @@
       </label>
       <button class="btn btn-primary" type="submit">提交</button>
     </form>
-    <ul>
-      <li class="tag-item">tag1</li>
-      <li class="tag-item">tag2</li>
+    <ul id="tag-list">
     </ul>
+    <?php tpl('component/js') ?>
+    <script src="js/cat.js"></script>
   </div>
 </body>
 </html>
