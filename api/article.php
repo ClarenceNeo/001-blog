@@ -30,9 +30,11 @@ class Article
     $stmt = $this->db->prepare("insert into post (title, content) value (:title , :content)");
     // dd($stmt);
     $r = $stmt->execute(['title'=>$title, 'content'=>$content]);
-
+    $s = $this->db->prepare("select last_insert_id()");
+    $s->execute();
+    $last_id = $s->fetchAll(2)['0']['last_insert_id()'];
     return $r ?
-      ['success' => true] :
+      ['success' => true,'last_id' => $last_id] :
       ['success' => false, 'msg' => 'db_internal_error'];
   }
 }
