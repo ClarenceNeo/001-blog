@@ -21,3 +21,5 @@ select post.id, tag.title from post_and_tag
 left join tag on post_and_tag.tag_id = tag.id 
 left join post on post.id = post_and_tag.post_id 
 where post.id = 23;
+
+alter table post_and_tag add unique key (post_id, tag_id);
