@@ -1,19 +1,26 @@
 <?php
-class Article
+require_once(dirname(__FILE__) . '/Model.php');
+
+class Article extends Model
 {
   public $db;
+  public $table = "post";
   public function __construct($db){
     $this->db = $db;
   }
   public function read($param)
   {
-    $stmt = $this->db->prepare("select * from post");
-    $r = $stmt->execute();
-    $data = $stmt->fetchAll(2);
-    // dd($data);
-    return $r ?
-      ['success' => true, 'data' => $data] :
-      ['success' => false, 'msg' => 'db_internal_error'];
+
+    $page = (int) @$param['page'] ?: 1;
+    $id = @$param['id'];
+
+    $data = $this->_read([
+      'page' => $page,
+      'id' => $id,
+    ]);
+    $count = $this->_count();
+
+    return ['success' => true, 'data' => $data, 'count' => $count];
   }
 
   public function add($param)

@@ -42,8 +42,8 @@
   }
 
   function render_tag(tag_list,el) {
-    console.log(tag_list);
-    console.log(el);
+    // console.log(tag_list);
+    // console.log(el);
     el.innerHTML = `<i class="fa fa-tags"></i>`;
     tag_list.forEach(function (item) {
       var a = document.createElement('a');
