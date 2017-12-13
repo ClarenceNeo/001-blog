@@ -3,6 +3,8 @@
   var el_cat_list = document.querySelector('#cat-list');
   var el_form = document.querySelector('#post-form');
   var logout = document.querySelector('#logout');
+  var post_id;
+
   function init() {
     render_cat();
     bind_submit();
@@ -33,7 +35,15 @@
       $.post("/a/article/add", row)
         .then(function (res) {
           if (res.success) {
-            console.log(res);
+            var obj = {};
+            post_id = res.last_id;
+            obj.post_id = post_id;
+            obj.tag_id = tag_id;
+            // console.log(obj);
+            $.post("/a/postag/add", obj)
+              .then(function (res) {
+                // console.log(res);
+              })
           }
         })
     })

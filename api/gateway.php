@@ -4,6 +4,7 @@ require_once(dirname(__FILE__) . '/../util/helper.php');
 require_once(dirname(__FILE__) . '/./article.php');
 require_once(dirname(__FILE__) . '/./cat.php');
 require_once(dirname(__FILE__) . '/./admin.php');
+require_once(dirname(__FILE__) . '/./post_add_tag.php');
 
 function parse_param($uri){
   $uri = explode('?', $uri)[0];
@@ -48,6 +49,9 @@ function has_permission_to($model, $action){
     ],
     'admin' => [
       'logout' => ['author']
+    ],
+    'postag' => [
+      'add' => ['author']
     ]
   ];
 
