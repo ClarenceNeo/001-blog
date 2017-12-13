@@ -38,7 +38,8 @@ function has_permission_to($model, $action){
   $public = [
     'admin' => ['login'],
     'article' => ['read'],
-    'cat' => ['read']
+    'cat' => ['read'],
+    'postag' => ['read_cat','read']
   ];
   $private = [
     'article' => [

@@ -35,7 +35,7 @@ class Postag
         return ['success' => false, 'msg' => 'invaild: id'];
       };
 
-      $sql = "select tag.title from post_and_tag 
+      $sql = "select tag.title,tag.id from post_and_tag 
               left join tag on post_and_tag.tag_id = tag.id 
               left join post on post.id = post_and_tag.post_id 
               where post.id = :id";
@@ -44,6 +44,32 @@ class Postag
       $r = $stmt->execute(['id'=>$id]);
 
       $data = $stmt->fetchAll(2);
+
+      return $r ?
+      ['success' => true, 'data' => $data] :
+      ['success' => false, 'msg' => 'db_internal_error'];
+    }
+
+    public function read_cat($param){
+      $id = @$param['id'];
+      if (!$id) {
+        return ['success' => false, 'msg' => 'invaild: id'];
+      }
+
+      $sql = "select post.title,post.id,post.content,post.create_at from post_and_tag 
+              left join tag on post_and_tag.tag_id = tag.id 
+              left join post on post.id = post_and_tag.post_id 
+              where tag.id = :id";
+      $stmt = $this->db->prepare($sql);
+      $r = $stmt->execute(['id'=>$id]);
+
+      $data = $stmt->fetchAll(2);
+
+      foreach ($data as $key => &$value) {
+        if($value['create_at']){
+          $value['create_at'] = date("Y-m-d",$value['create_at']);
+        }
+      }
 
       return $r ?
       ['success' => true, 'data' => $data] :

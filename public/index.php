@@ -14,6 +14,11 @@ if (strpos($uri, '/article') !== false) {
   return;
 }
 
+if (strpos($uri, '/tag') !== false) {
+  tpl('tag');
+  return;
+}
+
 switch ($uri) {
   case '/':
     // var_dump($_SESSION['user']);
