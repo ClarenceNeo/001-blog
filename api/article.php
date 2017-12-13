@@ -18,6 +18,13 @@ class Article extends Model
       'page' => $page,
       'id' => $id,
     ]);
+
+    foreach ($data as $key => &$value) {
+      if($value['create_at']){
+        $value['create_at'] = date("Y-m-d",$value['create_at']);
+      }
+    }
+
     $count = $this->_count();
 
     return ['success' => true, 'data' => $data, 'count' => $count];
@@ -27,16 +34,15 @@ class Article extends Model
   {
     $title = @$param['title'];
     $content = @$param['content'];
-    $create_at = @$param['create_at'];
-    $update_at = @$param['update_at'];
+    $create_at = time();
 
     if(!$title || !$content){
       return ['success' => false, msg =>"invalid: title;invalid: content"];
     }
 
-    $stmt = $this->db->prepare("insert into post (title, content) value (:title , :content)");
+    $stmt = $this->db->prepare("insert into post (title, content, create_at) value (:title , :content, :create_at)");
     // dd($stmt);
-    $r = $stmt->execute(['title'=>$title, 'content'=>$content]);
+    $r = $stmt->execute(['title'=>$title, 'content'=>$content, 'create_at'=>$create_at]);
     $s = $this->db->prepare("select last_insert_id()");
     $s->execute();
     $last_id = $s->fetchAll(2)['0']['last_insert_id()'];

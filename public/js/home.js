@@ -21,10 +21,10 @@
       var div = document.createElement('div');
       div.classList.add("article");
       div.innerHTML = `
-        <h2><a class="title" href="#">${item.title}</a></h2>
+        <h2><a class="title" href="/article?id=${item.id}">${item.title}</a></h2>
         <p>${item.content}</p>
         <div class="post_footer">
-          <span>2017.12.12</span>
+          <span>${item.create_at}</span>
           <span class="tags"></span>
         </div>
       `;

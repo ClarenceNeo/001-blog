@@ -9,6 +9,11 @@ if (strpos($uri, '/a/') !== false) {
   return;
 }
 
+if (strpos($uri, '/article') !== false) {
+  tpl('article');
+  return;
+}
+
 switch ($uri) {
   case '/':
     // var_dump($_SESSION['user']);
