@@ -31,6 +31,10 @@ class Postag
       if (!$id) {
         return ['success' => false, 'msg' => 'invaild: id'];
       }
+      if(!$this->find_id($id)){
+        return ['success' => false, 'msg' => 'invaild: id'];
+      };
+
       $sql = "select tag.title from post_and_tag 
               left join tag on post_and_tag.tag_id = tag.id 
               left join post on post.id = post_and_tag.post_id 
@@ -44,5 +48,16 @@ class Postag
       return $r ?
       ['success' => true, 'data' => $data] :
       ['success' => false, 'msg' => 'db_internal_error'];
+    }
+
+    public function find_id($id){
+      $sql = "select * from post_and_tag where post_id = :id";
+      $stmt = $this->db->prepare($sql);
+      $r = $stmt->execute(['id'=>$id]);
+      $data = $stmt->fetchAll(2);
+      if (!$data) {
+        return false;
+      }
+      return true;
     }
 }

@@ -1,6 +1,7 @@
 ;(function () {
   'use strict';
   var article_list;
+  var tag_list;
   var el_content = document.querySelector(".content");
   function init() {
     render();
@@ -24,10 +25,30 @@
         <p>${item.content}</p>
         <div class="post_footer">
           <span>2017.12.12</span>
-          <span class="tags"><i class="fa fa-tags"></i><a href="#">tag1</a> <a href="#">tag2</a></span>
+          <span class="tags"></span>
         </div>
       `;
+      var tag = div.querySelector(".tags");
+      $.post("/a/postag/read?id="+item.id)
+        .then(function (res) {
+          if (res.success) {
+            tag_list = res.data;
+            render_tag(tag_list,tag);
+            // console.log(res.data);
+          }
+        })
       el_content.appendChild(div);
+    })
+  }
+
+  function render_tag(tag_list,el) {
+    console.log(tag_list);
+    console.log(el);
+    el.innerHTML = `<i class="fa fa-tags"></i>`;
+    tag_list.forEach(function (item) {
+      var a = document.createElement('a');
+      a.innerText = item.title;
+      el.appendChild(a);
     })
   }
   init();
