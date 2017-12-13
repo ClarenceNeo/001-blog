@@ -51,7 +51,8 @@ function has_permission_to($model, $action){
       'logout' => ['author']
     ],
     'postag' => [
-      'add' => ['author']
+      'add' => ['author'],
+      'read' => ['author']
     ]
   ];
 
