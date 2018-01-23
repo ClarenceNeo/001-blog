@@ -1,9 +1,9 @@
 <?php
 function new_db(){
-  $host = 'localhost';
-  $dbname = 'Pblog';
-  $username = 'root';
-  $password = '';
+  $host = config('db_host');
+  $dbname = config('db_name');
+  $username = config('db_username');
+  $password = config('db_password');
   $charset = 'utf8';
   $collate = 'utf8_unicode_ci';
   $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
@@ -52,4 +52,20 @@ function dd($data){
     var_dump($item);
   }
   die();
+}
+
+function config($key)
+{
+  if (!$config = @$GLOBALS['__config']) {
+    $json = file_get_contents(root('.config', 'json'));
+    $config = json_decode($json, true);
+    $GLOBALS['__config'] = $config;
+  }
+
+  return @$config[$key];
+}
+
+function root($path, $ext = 'php')
+{
+  return dirname(__FILE__) . '/../' . $path . ($ext ? '.' . $ext : '');
 }
